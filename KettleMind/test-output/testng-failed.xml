@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Automation Tests]">
+  <test thread-count="5" name="Somke testing(failed)">
+    <classes>
+      <class name="FrameWork.AppTest">
+        <methods>
+          <include name="launchApp"/>
+        </methods>
+      </class> <!-- FrameWork.AppTest -->
+    </classes>
+  </test> <!-- Somke testing(failed) -->
+</suite> <!-- Failed suite [Automation Tests] -->
