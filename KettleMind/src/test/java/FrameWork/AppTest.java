@@ -3,9 +3,9 @@ package FrameWork;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +15,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
+import pageObjectRepositry.IntroActivityObjects;
 
 public class AppTest 
 {
@@ -33,16 +34,19 @@ public class AppTest
 //		cap.setCapability("wdaConnectionTimeout",240000);
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>( new URL("http://127.0.0.1:4723/wd/hub"),cap);
+
+		IntroActivityObjects introObject = new IntroActivityObjects(driver);
 		
 		WebDriverWait wait = new WebDriverWait(driver,10);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@text='Get Started']")));
+  wait.until(ExpectedConditions.visibilityOf(introObject.GetStartedButton));
 		
 		try {
-			 driver.findElementByAndroidUIAutomator("text(\"Get Started\")").click();
+			introObject.GetStartedButton.click();
 			
 			}catch(Exception e) {
 			System.out.println("ElementNotFound exception");
 		}
 		System.out.println("App Launched successfully");
+		
     }
 }
